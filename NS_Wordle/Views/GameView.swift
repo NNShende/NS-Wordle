@@ -16,7 +16,7 @@ struct GameView: View {
             VStack {
                 Spacer()
                 VStack(spacing: 3) {
-                    ForEach(0..<Global.NUM_GUESSES, id: \.self) {
+                    ForEach(0 ..< Global.NUM_GUESSES, id: \.self) {
                         i in
                         GuessView(guess: $viewModel.guesses[i])
                             .modifier(

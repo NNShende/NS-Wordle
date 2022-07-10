@@ -13,7 +13,7 @@ struct Guess {
     
     var word = "     "
     
-    var bgColors = [Color](repeating: .systemBackground, count: 5)
+    var bgColors = [Color](repeating: .wrong, count: 5)
     
     var cardsFlipped = [Bool](repeating: false, count: 5)
     
