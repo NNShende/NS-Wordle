@@ -19,6 +19,7 @@
 		26032FF32878B15500C77B93 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26032FF22878B15500C77B93 /* Global.swift */; };
 		26032FF52878B76E00C77B93 /* LetterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26032FF42878B76E00C77B93 /* LetterButtonView.swift */; };
 		26032FF72878B8FB00C77B93 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26032FF62878B8FB00C77B93 /* KeyboardView.swift */; };
+		268DAA90287B287F0069BE10 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268DAA8F287B287F0069BE10 /* Shake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		26032FF22878B15500C77B93 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26032FF42878B76E00C77B93 /* LetterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonView.swift; sourceTree = "<group>"; };
 		26032FF62878B8FB00C77B93 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		268DAA8F287B287F0069BE10 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		26032FD12878A34B00C77B93 /* NS_Wordle */ = {
 			isa = PBXGroup;
 			children = (
+				268DAA8E287B28710069BE10 /* Animations */,
 				26032FEF2878AF1A00C77B93 /* ViewModels */,
 				26032FEC2878AC8300C77B93 /* Views */,
 				26032FE82878AA6500C77B93 /* Models */,
@@ -121,6 +124,14 @@
 				26032FF02878AF2C00C77B93 /* WordleViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		268DAA8E287B28710069BE10 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				268DAA8F287B287F0069BE10 /* Shake.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 				26032FF72878B8FB00C77B93 /* KeyboardView.swift in Sources */,
 				26032FEA2878AA6D00C77B93 /* Guess.swift in Sources */,
 				26032FE72878A9BC00C77B93 /* Color+Extension.swift in Sources */,
+				268DAA90287B287F0069BE10 /* Shake.swift in Sources */,
 				26032FF12878AF2C00C77B93 /* WordleViewModel.swift in Sources */,
 				26032FD32878A34B00C77B93 /* NS_WordleApp.swift in Sources */,
 				26032FF32878B15500C77B93 /* Global.swift in Sources */,

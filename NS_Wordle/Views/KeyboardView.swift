@@ -21,6 +21,8 @@ struct KeyboardView: View {
                     letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(viewModel.disabledLetters)
+                .opacity(viewModel.disabledLetters ? 0.6 : 1)
             }
             
             HStack(spacing: 2) {
@@ -28,6 +30,8 @@ struct KeyboardView: View {
                     letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(viewModel.disabledLetters)
+                .opacity(viewModel.disabledLetters ? 0.6 : 1)
             }
             
             HStack(spacing: 2) {
@@ -40,11 +44,15 @@ struct KeyboardView: View {
                 .frame(width: 60, height: 50)
                 .foregroundColor(.primary)
                 .background(Color.unused)
+                .disabled(viewModel.disabledEnterButton)
+                .opacity(viewModel.disabledEnterButton  ? 0.6 : 1)
                 
                 ForEach(botRowArray, id: \.self) {
                     letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(viewModel.disabledLetters)
+                .opacity(viewModel.disabledLetters ? 0.6 : 1)
                 
                 Button {
                     viewModel.removeLetter()
@@ -54,6 +62,8 @@ struct KeyboardView: View {
                         .frame(width: 40, height: 50)
                         .foregroundColor(.primary)
                         .background(Color.unused)
+                        .disabled(viewModel.disabledBackSpace)
+                        .opacity(viewModel.disabledBackSpace  ? 0.6 : 1)
 
                 }
             }

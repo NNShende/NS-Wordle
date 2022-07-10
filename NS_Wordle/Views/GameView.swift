@@ -16,8 +16,14 @@ struct GameView: View {
             VStack {
                 Spacer()
                 VStack(spacing: 3) {
-                    ForEach(0...5, id: \.self) { i in
+                    ForEach(0..<Global.NUM_GUESSES, id: \.self) {
+                        i in
                         GuessView(guess: $viewModel.guesses[i])
+                            .modifier(
+                                Shake(
+                                    animatableData: CGFloat(viewModel.incorrectAttempts[i])
+                                )
+                            )
                     }
                 }
                 .frame(width: Global.boardWidth, height: Global.boardWidth)

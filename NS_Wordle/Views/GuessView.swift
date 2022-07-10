@@ -13,7 +13,7 @@ struct GuessView: View {
      
     var body: some View {
         HStack(spacing: 3) {
-            ForEach(0...4,  id: \.self) { i in
+            ForEach(0..<Global.WORD_SIZE,  id: \.self) { i in
                 Text(guess.guessLetters[i])
                     .foregroundColor(.primary)
                     .frame(
