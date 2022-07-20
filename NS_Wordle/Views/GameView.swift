@@ -12,58 +12,78 @@ struct GameView: View {
     @EnvironmentObject var viewModel: WordleViewModel
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Spacer()
-                VStack(spacing: 3) {
-                    ForEach(0 ..< Global.NUM_GUESSES, id: \.self) {
-                        i in
-                        GuessView(guess: $viewModel.guesses[i])
-                            .modifier(
-                                Shake(
-                                    animatableData: CGFloat(viewModel.incorrectAttempts[i])
+        ZStack {
+            NavigationView {
+                VStack {
+                    Spacer()
+                    VStack(spacing: 3) {
+                        ForEach(0 ..< Global.NUM_GUESSES, id: \.self) { i in
+                            GuessView(guess: $viewModel.guesses[i])
+                                .modifier(
+                                    Shake(
+                                        animatableData: CGFloat(viewModel.incorrectAttempts[i])
+                                    )
                                 )
-                            )
+                        }
+                    }
+                    .frame(width: Global.boardWidth, height: Global.boardWidth)
+                    Spacer()
+                    KeyboardView()
+                        .scaleEffect(Global.keyboardScale)
+                        .padding(.top)
+                    Spacer()
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .overlay(alignment: .top) {
+                    if let toastText = viewModel.toastText {
+                        ToastView(toastText: toastText)
+                            .offset(y: 20)
                     }
                 }
-                .frame(width: Global.boardWidth, height: Global.boardWidth)
-                Spacer()
-                KeyboardView()
-                    .scaleEffect(Global.keyboardScale)
-                    .padding(.top)
-                Spacer()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack {
+                            if !viewModel.inPlay {
+                                Button {
+                                    viewModel.newGame()
+                                } label: {
+                                    Image(systemName: "plus.circle")
+                                }
+                            }
+                            
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "questionmark.circle")
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Text("WORDLE")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.primary)
+                        
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        HStack {
+                            Button {
+                                viewModel.showStats.toggle()
+                            } label: {
+                                Image(systemName: "chart.bar")
+                            }
+                            
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "gearshape.fill")
+                            }
+                        }
+                    }
+                }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "questionmark.circle")
-                    }
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("WORDLE")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.primary)
-                    
-                }                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack {
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "chart.bar")
-                        }
-                        
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                        }
-                    }
-                }
+            if viewModel.showStats {
+                StatisticsView()
             }
         }
         .navigationViewStyle(.stack)

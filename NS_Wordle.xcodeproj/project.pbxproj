@@ -21,6 +21,10 @@
 		26032FF72878B8FB00C77B93 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26032FF62878B8FB00C77B93 /* KeyboardView.swift */; };
 		268DAA90287B287F0069BE10 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268DAA8F287B287F0069BE10 /* Shake.swift */; };
 		268DAA92287B88DD0069BE10 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268DAA91287B88DD0069BE10 /* FlipView.swift */; };
+		26B1E4F8288875FE00426D7E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E4F7288875FE00426D7E /* ToastView.swift */; };
+		26B1E4FD28887E3900426D7E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E4FC28887E3900426D7E /* Logger.swift */; };
+		26B1E4FF2888806300426D7E /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E4FE2888806300426D7E /* Statistic.swift */; };
+		26B1E5012888839300426D7E /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5002888839300426D7E /* StatisticsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		26032FF62878B8FB00C77B93 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		268DAA8F287B287F0069BE10 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 		268DAA91287B88DD0069BE10 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		26B1E4F7288875FE00426D7E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		26B1E4FC28887E3900426D7E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		26B1E4FE2888806300426D7E /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
+		26B1E5002888839300426D7E /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 		26032FD12878A34B00C77B93 /* NS_Wordle */ = {
 			isa = PBXGroup;
 			children = (
+				26B1E4FB28887E2F00426D7E /* Util */,
 				268DAA8E287B28710069BE10 /* Animations */,
 				26032FEF2878AF1A00C77B93 /* ViewModels */,
 				26032FEC2878AC8300C77B93 /* Views */,
@@ -105,6 +114,7 @@
 			children = (
 				26032FE92878AA6D00C77B93 /* Guess.swift */,
 				26032FF22878B15500C77B93 /* Global.swift */,
+				26B1E4FE2888806300426D7E /* Statistic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -116,6 +126,8 @@
 				26032FED2878ACA100C77B93 /* GuessView.swift */,
 				26032FF42878B76E00C77B93 /* LetterButtonView.swift */,
 				26032FF62878B8FB00C77B93 /* KeyboardView.swift */,
+				26B1E4F7288875FE00426D7E /* ToastView.swift */,
+				26B1E5002888839300426D7E /* StatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +147,14 @@
 				268DAA91287B88DD0069BE10 /* FlipView.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		26B1E4FB28887E2F00426D7E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				26B1E4FC28887E3900426D7E /* Logger.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,13 +229,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				26032FD52878A34B00C77B93 /* GameView.swift in Sources */,
+				26B1E5012888839300426D7E /* StatisticsView.swift in Sources */,
 				268DAA92287B88DD0069BE10 /* FlipView.swift in Sources */,
 				26032FF52878B76E00C77B93 /* LetterButtonView.swift in Sources */,
 				26032FEE2878ACA100C77B93 /* GuessView.swift in Sources */,
+				26B1E4F8288875FE00426D7E /* ToastView.swift in Sources */,
 				26032FF72878B8FB00C77B93 /* KeyboardView.swift in Sources */,
+				26B1E4FF2888806300426D7E /* Statistic.swift in Sources */,
 				26032FEA2878AA6D00C77B93 /* Guess.swift in Sources */,
 				26032FE72878A9BC00C77B93 /* Color+Extension.swift in Sources */,
 				268DAA90287B287F0069BE10 /* Shake.swift in Sources */,
+				26B1E4FD28887E3900426D7E /* Logger.swift in Sources */,
 				26032FF12878AF2C00C77B93 /* WordleViewModel.swift in Sources */,
 				26032FD32878A34B00C77B93 /* NS_WordleApp.swift in Sources */,
 				26032FF32878B15500C77B93 /* Global.swift in Sources */,

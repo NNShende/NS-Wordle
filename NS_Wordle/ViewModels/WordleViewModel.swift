@@ -10,6 +10,8 @@ import SwiftUI
 class WordleViewModel: ObservableObject {
     @Published var guesses: [Guess] = []
     @Published var incorrectAttempts = [Int] (repeating: 0, count: 6)
+    @Published var toastText: String?
+    @Published var showStats = false
     
     var keyColors = [String : Color]()
     var matchedLetters = [String]()
@@ -21,6 +23,11 @@ class WordleViewModel: ObservableObject {
     
     var inPlay = false
     var gameOver = false
+    
+    let winWords = ["Rare W", "Noice", "Now that was epic"]
+    let loseWords = ["L + Ratio", "Owned", "Mickey Mouse Player"]
+    
+    var statistics: Statistics
     
     var gameStarted: Bool {
         !currentWord.isEmpty || currentRow > 0
@@ -40,6 +47,7 @@ class WordleViewModel: ObservableObject {
     
     
     init() {
+        statistics = Statistics.load()
         newGame()
     }
     
@@ -51,7 +59,7 @@ class WordleViewModel: ObservableObject {
         inPlay = true
         currentRow = 0
         gameOver = false
-        print(selectedWordFromBank)
+        MyLogger.debug(msg: selectedWordFromBank)
     }
     
     func populateDefaults() {
@@ -78,24 +86,29 @@ class WordleViewModel: ObservableObject {
         if disabledEnterButton { return }
         if currentWord == selectedWordFromBank {
             gameOver = true
-            print("You win!")
+            MyLogger.debug(msg: "You win!")
+            showToast(with: winWords.randomElement()!)
             setCurrentGuessColors()
             inPlay = false
+            statistics.update(win: true, index: currentRow)
         } else {
             if verifyWord() {
-                print("valid word")
+                MyLogger.debug(msg: "valid word")
                 setCurrentGuessColors()
                 currentRow += 1
                 currentWord = ""
                 if currentRow == 6 {
                     gameOver = true
                     inPlay = false
-                    print("You lose")
+                    MyLogger.debug(msg: "You lose")
+                    showToast(with: String(format: "%@. The correct word was: %@.", loseWords.randomElement()!, selectedWordFromBank))
+                    statistics.update(win: false)
                 }
             } else {
                 withAnimation {
                     self.incorrectAttempts[currentRow] += 1
                 }
+                showToast(with: "Not in word")
                 self.incorrectAttempts[currentRow] = 0
             }
         }
@@ -173,6 +186,20 @@ class WordleViewModel: ObservableObject {
         for col in 0 ..< Global.WORD_SIZE {
             DispatchQueue.main.asyncAfter(deadline:  .now() + Double(col) * Global.cardFlipDelay) {
                 self.guesses[row].cardsFlipped[col].toggle()
+            }
+        }
+    }
+    
+    func showToast(with text: String) {
+        withAnimation {
+            toastText = text
+        }
+        withAnimation(Animation.linear(duration: 0.2).delay(3)) {
+            toastText = nil
+            if gameOver {
+                withAnimation(Animation.linear(duration: 0.2).delay(3)) {
+                    showStats.toggle()
+                }
             }
         }
     }
