@@ -28,7 +28,7 @@ struct GameView: View {
                                 )
                         }
                     }
-                    .frame(width: Global.boardWidth, height: Global.boardWidth)
+                    .frame(width: Global.boardWidth, height: 6 * Global.boardWidth / 5)
                     Spacer()
                     KeyboardView()
                         .scaleEffect(Global.keyboardScale)

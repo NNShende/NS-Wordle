@@ -11,7 +11,7 @@ struct StatisticsView: View {
     @EnvironmentObject var viewModel: WordleViewModel
     var body: some View {
         let stats = viewModel.statistics
-        VStack() {
+        VStack(spacing: 10) {
             Spacer()
             HStack(alignment: .top) {
                 Spacer()
@@ -69,22 +69,21 @@ struct StatisticsView: View {
                         Spacer()
                     }
                 }
-                if viewModel.gameOver {
-                    HStack {
-                        Spacer()
-                        Button {
-                            viewModel.shareResult()
-                        } label: {
-                            HStack {
-                                Image(systemName: "square.and.arrow.up")
-                                Text("Share")
-                            }
-                            .foregroundColor(.white)
-                            .padding(8)
-                            .background(Color.correct)
+                HStack {
+                    Spacer()
+                    Button {
+                        viewModel.shareResult()
+                    } label: {
+                        HStack {
+                            Image(systemName: "square.and.arrow.up")
+                            Text("Share")
                         }
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color.correct)
                     }
                 }
+                .opacity(viewModel.gameOver ? 1 : 0)
             }
             Spacer()
         }
