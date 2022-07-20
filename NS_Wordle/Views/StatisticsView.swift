@@ -19,6 +19,8 @@ struct StatisticsView: View {
                 } label: {
                     Text("X")
                 }
+                .offset(x: 10, y: 10)
+                
             }
             Text("STATISTICS")
                 .font(.headline)
@@ -67,6 +69,22 @@ struct StatisticsView: View {
                         Spacer()
                     }
                 }
+                if viewModel.gameOver {
+                    HStack {
+                        Spacer()
+                        Button {
+                            viewModel.shareResult()
+                        } label: {
+                            HStack {
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Share")
+                            }
+                            .foregroundColor(.white)
+                            .padding(8)
+                            .background(Color.correct)
+                        }
+                    }
+                }
             }
             Spacer()
         }
@@ -77,13 +95,6 @@ struct StatisticsView: View {
         .padding()
         .shadow(color: .black.opacity(0.3), radius: 10)
         .offset(y: -70)
-    }
-}
-
-struct StatisticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatisticsView()
-            .environmentObject(WordleViewModel())
     }
 }
 
@@ -100,5 +111,12 @@ struct SingleStat: View {
                 .frame(width: 50)
                 .multilineTextAlignment(.center)
         }
+    }
+}
+
+struct StatisticsView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatisticsView()
+            .environmentObject(WordleViewModel())
     }
 }

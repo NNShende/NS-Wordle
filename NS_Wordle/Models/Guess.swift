@@ -22,4 +22,9 @@ struct Guess {
             String(c)
         }
     }
+    
+    var results: String {
+        let tryColors: [Color: String] = [.misplaced : "🟨", .correct : "🟩", .wrong : "⬛"]
+        return bgColors.compactMap { tryColors[$0] }.joined(separator: "")
+    }
 }

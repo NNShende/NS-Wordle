@@ -25,6 +25,9 @@
 		26B1E4FD28887E3900426D7E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E4FC28887E3900426D7E /* Logger.swift */; };
 		26B1E4FF2888806300426D7E /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E4FE2888806300426D7E /* Statistic.swift */; };
 		26B1E5012888839300426D7E /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5002888839300426D7E /* StatisticsView.swift */; };
+		26B1E5032888918900426D7E /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5022888918900426D7E /* UIWindow+Extension.swift */; };
+		26B1E5052888968400426D7E /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5042888968400426D7E /* ColorSchemeManager.swift */; };
+		26B1E5072888979100426D7E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5062888979100426D7E /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		26B1E4FC28887E3900426D7E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		26B1E4FE2888806300426D7E /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		26B1E5002888839300426D7E /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		26B1E5022888918900426D7E /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		26B1E5042888968400426D7E /* ColorSchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
+		26B1E5062888979100426D7E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				26032FE62878A9BC00C77B93 /* Color+Extension.swift */,
+				26B1E5022888918900426D7E /* UIWindow+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 				26032FF62878B8FB00C77B93 /* KeyboardView.swift */,
 				26B1E4F7288875FE00426D7E /* ToastView.swift */,
 				26B1E5002888839300426D7E /* StatisticsView.swift */,
+				26B1E5062888979100426D7E /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				26032FF02878AF2C00C77B93 /* WordleViewModel.swift */,
+				26B1E5042888968400426D7E /* ColorSchemeManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -229,8 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				26032FD52878A34B00C77B93 /* GameView.swift in Sources */,
+				26B1E5032888918900426D7E /* UIWindow+Extension.swift in Sources */,
 				26B1E5012888839300426D7E /* StatisticsView.swift in Sources */,
+				26B1E5072888979100426D7E /* SettingsView.swift in Sources */,
 				268DAA92287B88DD0069BE10 /* FlipView.swift in Sources */,
+				26B1E5052888968400426D7E /* ColorSchemeManager.swift in Sources */,
 				26032FF52878B76E00C77B93 /* LetterButtonView.swift in Sources */,
 				26032FEE2878ACA100C77B93 /* GuessView.swift in Sources */,
 				26B1E4F8288875FE00426D7E /* ToastView.swift in Sources */,
