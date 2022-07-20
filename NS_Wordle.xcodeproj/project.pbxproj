@@ -28,6 +28,7 @@
 		26B1E5032888918900426D7E /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5022888918900426D7E /* UIWindow+Extension.swift */; };
 		26B1E5052888968400426D7E /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5042888968400426D7E /* ColorSchemeManager.swift */; };
 		26B1E5072888979100426D7E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5062888979100426D7E /* SettingsView.swift */; };
+		26B1E5092888A91E00426D7E /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E5082888A91E00426D7E /* HelpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		26B1E5022888918900426D7E /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		26B1E5042888968400426D7E /* ColorSchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
 		26B1E5062888979100426D7E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		26B1E5082888A91E00426D7E /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				26B1E4F7288875FE00426D7E /* ToastView.swift */,
 				26B1E5002888839300426D7E /* StatisticsView.swift */,
 				26B1E5062888979100426D7E /* SettingsView.swift */,
+				26B1E5082888A91E00426D7E /* HelpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				26B1E4F8288875FE00426D7E /* ToastView.swift in Sources */,
 				26032FF72878B8FB00C77B93 /* KeyboardView.swift in Sources */,
 				26B1E4FF2888806300426D7E /* Statistic.swift in Sources */,
+				26B1E5092888A91E00426D7E /* HelpView.swift in Sources */,
 				26032FEA2878AA6D00C77B93 /* Guess.swift in Sources */,
 				26032FE72878A9BC00C77B93 /* Color+Extension.swift in Sources */,
 				268DAA90287B287F0069BE10 /* Shake.swift in Sources */,

@@ -11,6 +11,7 @@ struct GameView: View {
     
     @EnvironmentObject var viewModel: WordleViewModel
     @State var showSettings = false
+    @State var showHelp = false
     
     var body: some View {
         ZStack {
@@ -54,7 +55,7 @@ struct GameView: View {
                             }
                             
                             Button {
-                                
+                                showHelp.toggle()
                             } label: {
                                 Image(systemName: "questionmark.circle")
                             }
@@ -64,7 +65,7 @@ struct GameView: View {
                         Text("WORDLE")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundColor(.primary)
+                            .foregroundColor(viewModel.hardMode ? Color(.systemRed) : .primary)
                         
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -85,6 +86,9 @@ struct GameView: View {
                 }
                 .sheet(isPresented: $showSettings) {
                     SettingsView()
+                }
+                .sheet(isPresented: $showHelp) {
+                    HelpView()
                 }
             }
             if viewModel.showStats {

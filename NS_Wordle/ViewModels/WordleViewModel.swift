@@ -12,10 +12,12 @@ class WordleViewModel: ObservableObject {
     @Published var incorrectAttempts = [Int] (repeating: 0, count: 6)
     @Published var toastText: String?
     @Published var showStats = false
+    @AppStorage("hardMode") var hardMode = false
     
     var keyColors = [String : Color]()
     var matchedLetters = [String]()
     var misplacedLetters = [String]()
+    var correctlyPlacedLetters = [String]()
     
     var selectedWordFromBank = ""
     var currentWord = ""
@@ -54,6 +56,7 @@ class WordleViewModel: ObservableObject {
     func newGame() {
         populateDefaults()
         selectedWordFromBank = Global.wordBank.randomElement()!
+        correctlyPlacedLetters = [String](repeating: "-", count: Global.WORD_SIZE)
         currentWord = ""
         
         inPlay = true
@@ -93,7 +96,17 @@ class WordleViewModel: ObservableObject {
             statistics.update(win: true, index: currentRow)
         } else {
             if verifyWord() {
-                MyLogger.debug(msg: "valid word")
+                MyLogger.debug(msg: "valid word \(currentWord)")
+                if hardMode {
+                    if let toastString = hardCorrectCheck() {
+                        showToast(with: toastString)
+                        return
+                    }
+                    if let toastString = hardMisplacedCheck() {
+                        showToast(with: toastString)
+                        return
+                    }
+                }
                 setCurrentGuessColors()
                 currentRow += 1
                 currentWord = ""
@@ -108,7 +121,7 @@ class WordleViewModel: ObservableObject {
                 withAnimation {
                     self.incorrectAttempts[currentRow] += 1
                 }
-                showToast(with: "Not in word")
+                showToast(with: "Not a word")
                 self.incorrectAttempts[currentRow] = 0
             }
         }
@@ -128,6 +141,28 @@ class WordleViewModel: ObservableObject {
     
     func verifyWord() -> Bool {
         return UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: currentWord )
+    }
+    
+    func hardCorrectCheck() -> String? {
+        let guessLetters = guesses[currentRow].guessLetters
+        for i in 0 ..< Global.WORD_SIZE {
+            if correctlyPlacedLetters[i] != "-" && guessLetters[i] != correctlyPlacedLetters[i] {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .ordinal
+                return "\(formatter.string(for: i + 1)!) letter must be \(correctlyPlacedLetters[i])"
+            }
+        }
+        return nil
+    }
+    
+    func hardMisplacedCheck() -> String? {
+        let guessLetters = guesses[currentRow].guessLetters
+        for letter in guessLetters {
+            if !guessLetters.contains(letter) {
+                return "Must contain the letter '\(letter)'"
+            }
+        }
+        return nil
     }
     
     func setCurrentGuessColors() {
@@ -153,7 +188,7 @@ class WordleViewModel: ObservableObject {
                         misplacedLetters.remove(at: index)
                     }
                 }
-                
+                correctlyPlacedLetters[index] = correctLetter
                 frequency[guessLetter]! -= 1
             }
         }
@@ -203,17 +238,6 @@ class WordleViewModel: ObservableObject {
             }
         }
     }
-    
-    /*
-     Wordle 396 X/6
-
-     ⬛🟨⬛🟨🟩
-     ⬛⬛🟨⬛🟩
-     ⬛⬛⬛⬛🟩
-     🟩🟩🟩⬛🟩
-     🟩🟩🟩⬛🟩
-     🟩🟩🟩⬛🟩
-     */
     
     func shareResult() {
         let stat = Statistics.load()

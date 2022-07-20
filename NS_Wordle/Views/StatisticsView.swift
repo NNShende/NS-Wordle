@@ -11,9 +11,9 @@ struct StatisticsView: View {
     @EnvironmentObject var viewModel: WordleViewModel
     var body: some View {
         let stats = viewModel.statistics
-        VStack(spacing: 10) {
+        VStack() {
             Spacer()
-            HStack {
+            HStack(alignment: .top) {
                 Spacer()
                 Button {
                     viewModel.showStats.toggle()
@@ -90,8 +90,11 @@ struct StatisticsView: View {
         }
         .padding()
         .frame(width: 320, height: 370)
-        .background(RoundedRectangle(cornerRadius: 15)
-            .fill(Color.systemBackground))
+        .background(
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color.secondary)
+                .background(RoundedRectangle(cornerRadius: 15).fill(Color.systemBackground))
+        )
         .padding()
         .shadow(color: .black.opacity(0.3), radius: 10)
         .offset(y: -70)
@@ -115,8 +118,15 @@ struct SingleStat: View {
 }
 
 struct StatisticsView_Previews: PreviewProvider {
+    static var viewModel = WordleViewModel()
     static var previews: some View {
         StatisticsView()
-            .environmentObject(WordleViewModel())
+            .environmentObject(
+                { () -> WordleViewModel in
+                    let viewModel = WordleViewModel()
+                    viewModel.gameOver = true
+                    return viewModel
+                }()
+            )
     }
 }

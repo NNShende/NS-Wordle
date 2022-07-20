@@ -9,10 +9,12 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var csManager: ColorSchemeManager
+    @EnvironmentObject var viewModel: WordleViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 10) {
+                Toggle("Hard Mode", isOn: $viewModel.hardMode)
                 Text("Change Theme")
                 Picker("Display Mode", selection: $csManager.colorScheme) {
                     Text("Dark").tag(ColorScheme.dark)
@@ -22,6 +24,7 @@ struct SettingsView: View {
                 .pickerStyle(.segmented)
                 Spacer()
             }
+            .padding()
             .navigationTitle("Options")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -41,5 +44,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(ColorSchemeManager())
+            .environmentObject(WordleViewModel())
     }
 }
