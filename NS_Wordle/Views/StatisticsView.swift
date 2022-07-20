@@ -12,6 +12,7 @@ struct StatisticsView: View {
     var body: some View {
         let stats = viewModel.statistics
         VStack(spacing: 10) {
+            Spacer()
             HStack {
                 Spacer()
                 Button {
@@ -19,8 +20,6 @@ struct StatisticsView: View {
                 } label: {
                     Text("X")
                 }
-                .offset(x: 10, y: 10)
-                
             }
             Text("STATISTICS")
                 .font(.headline)
@@ -43,6 +42,7 @@ struct StatisticsView: View {
                 ForEach(0 ..< Global.NUM_GUESSES, id: \.self) { i in
                     HStack {
                         Text("\(i+1)")
+                            .frame(width: 20, height: 20, alignment: .center)
                         if stats.frequencies[i] == 0 {
                             Rectangle()
                                 .fill(Color.wrong)
@@ -61,9 +61,9 @@ struct StatisticsView: View {
                                             .foregroundColor(.white)
                                             .padding(.horizontal, 5),
                                         alignment: .trailing
-                    
-                                    )
                                         
+                                    )
+                                
                             }
                         }
                         Spacer()
