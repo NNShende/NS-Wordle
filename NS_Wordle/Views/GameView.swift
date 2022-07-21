@@ -46,13 +46,11 @@ struct GameView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         HStack {
-                            if !viewModel.inPlay {
-                                Button {
-                                    viewModel.newGame()
-                                } label: {
-                                    Image(systemName: "plus.circle")
-                                }
-                            }
+                            Button {
+                                viewModel.newGame()
+                            } label: {
+                                Image(systemName: "plus.circle")
+                            }.disabled(viewModel.inPlay)
                             
                             Button {
                                 showHelp.toggle()
@@ -66,6 +64,7 @@ struct GameView: View {
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .foregroundColor(viewModel.hardMode ? Color(.systemRed) : .primary)
+                            .minimumScaleFactor(0.5)
                         
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {

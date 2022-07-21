@@ -99,10 +99,12 @@ class WordleViewModel: ObservableObject {
                 MyLogger.debug(msg: "valid word \(currentWord)")
                 if hardMode {
                     if let toastString = hardCorrectCheck() {
+                        shakeWord(row: currentRow)
                         showToast(with: toastString)
                         return
                     }
                     if let toastString = hardMisplacedCheck() {
+                        shakeWord(row: currentRow)
                         showToast(with: toastString)
                         return
                     }
@@ -118,11 +120,8 @@ class WordleViewModel: ObservableObject {
                     statistics.update(win: false)
                 }
             } else {
-                withAnimation {
-                    self.incorrectAttempts[currentRow] += 1
-                }
+                shakeWord(row: currentRow)
                 showToast(with: "Not a word")
-                self.incorrectAttempts[currentRow] = 0
             }
         }
     }
@@ -259,5 +258,12 @@ class WordleViewModel: ObservableObject {
         default:
             break
         }
+    }
+    
+    func shakeWord(row: Int) {
+        withAnimation {
+            self.incorrectAttempts[row] += 1
+        }
+        self.incorrectAttempts[row] = 0
     }
 }
