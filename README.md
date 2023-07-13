@@ -1,4 +1,5 @@
 # NS-Wordle
+- My attempt at recreating Wordle while learning IOS / SwiftUI
 
 ## Tutorial
 [Youtube Video](https://www.youtube.com/watch?v=F43LZVpS-ZQ&list=PLBn01m5Vbs4DJvXqQzgQ6O5pLB8Qc2uUD)
